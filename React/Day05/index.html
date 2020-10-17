@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <style>
+        input[type='submit'], button, [aria-label]{
+          cursor: pointer;
+        }
+        #spoiler{
+          display: none;
+        }
+      </style>
+
+    <title>G2</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="fontawesome-free-5.15.1-web/css/all.css" rel="stylesheet">
+        
+	<!--<script class="jsbin" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>-->
+    <script src="script.js" defer></script>
+</head>
+<body>
+<div id="loginFom">
+    <div class="logo"></div>
+    <div class="login-block">
+        <h1>Please Input Your Account</h1>
+        <form action="javascript:void(0);" method="POST" onsubmit="app.Login()"> 
+            <input type="text" placeholder="Username" id="cekUser" class="username" />
+            <input type="password" placeholder="Password" id="cekPass" class="password" />
+            <button>Log in</button>
+        </form>
+        <p id="usernameFault" style="display: none; color: red; font-size: 12px;"></p>
+    </div>
+</div>
+
+<div id="staff" style="display: none">
+    <div class="logo"></div>
+    <div class="staff">
+        <center><h3>Selamat Datang, <p id="staff-profile-welcome"></p></h3></center>
+        <table align="center" width="80%">
+            <tr>
+                <td valign="top" width="30%">Username</td>
+                <td valign="top" width="2%">&nbsp;:&nbsp;</td>
+                <td><div id="staff-profile-username"></div></td>
+            </tr>
+            <tr>
+                <td>Nama</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td><div id="staff-profile-name"></div></td>
+            </tr>
+            <tr>
+                <td>Alamat</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td><div id="staff-profile-address"></div></td>
+            </tr>
+            <tr><td height="40" colspan="3"></td></tr>
+            <tr><td colspan="3" align="center"><b>Riwayat Pekerjaan</b></td></tr>
+            <tr>
+                <td colspan="3">
+                    <table id="t-staff" width="80%" align="center">
+                        <thead>
+                            <tr>
+                                <th width="3%">No.</th>
+                                <th>Pekerjaan</th>
+                                <th>Awal Kerja</th>
+                                <th>Akhir Kerja</th>
+                            </tr>
+                        </thead>
+                        <tbody id="staff-experince">
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr><td height="40" colspan="3"></td></tr>
+            <tr><td colspan="3" align="center"><b>Keahlian</b></td></tr>
+            <tr>
+                <td colspan="3">
+                    <table id="t-staff" width="80%" align="center">
+                        <thead>
+                            <tr>
+                                <th width="3%">No.</th>
+                                <th>Keahlian</th>
+                            </tr>
+                        </thead>
+                        <tbody id="staff-skill">
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr><td height="40" colspan="3"></td></tr>
+            <tr><td colspan="3" align="center"><input type="submit" value="Logout" class="btn btn-danger" onclick="app.Logout()"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div id="hrd" style="display: none">
+    <div class="logo"></div>
+    <div class="staff">
+        <center><h3>Selamat Datang, <p id="hr-profile-welcome"></p></h3></center>
+        <table align="center" width="80%">
+            <tr>
+                <td valign="top" width="30%">Username</td>
+                <td valign="top" width="2%">&nbsp;:&nbsp;</td>
+                <td><div id="hr-profile-username"></div></td>
+            </tr>
+            <tr>
+                <td>Nama</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td><div id="hr-profile-name"></div></td>
+            </tr>
+            <tr>
+                <td>Alamat</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td><div id="hr-profile-address"></div></td>
+            </tr>
+            <tr><td height="40" colspan="3"></td></tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <form action="javascript:void(0);" method="POST" onsubmit="app.SeeProfileStaff()">
+                        <input type="hidden" id="SeeProfileStaffGet">
+                        <input type="submit" value="Lihat Profil Saya" class="btn btn-primary">
+                    </form>
+                </td>
+            <tr><td height="60" colspan="3"></td></tr>
+            <tr><td colspan="3" align="center"><h4>Data Karyawan</h4></td></tr>
+            <tr><td colspan="3" align="center"><button type="submit" class="btn btn-success btn-sm" onclick="app.Registration()"><i class="fa fa-plus-circle"></i> Tambah Data Karyawan</button></td></tr>
+            <tr>
+                <td colspan="3">
+                    <table id="t-staff" width="80%" align="center">
+                        <thead>
+                        <tr>
+                            <th width="3%">No.</th>
+                            <th>Username</th>
+                            <th>Nama</th>
+                            <th>Alamat</th>
+                            <th>Role</th>
+                            <th>#</th>
+                          </tr>
+                    </thead>
+                    <tbody id="population">
+                    </tbody>
+                        <tr>
+                            <td colspan="7" align="center">
+                                    <input type="submit" value="First" class="btn btn-default btn-sm" onclick="app.First()">
+                                    <input type="submit" value="Previous" class="btn btn-primary btn-sm" onclick="app.Previous()">
+                                    <input type="submit" value="Next" class="btn btn-primary btn-sm" onclick="app.Next()">
+                                    <input type="submit" value="Last" class="btn btn-default btn-sm" onclick="app.Last()">
+                                </td>
+                        </tr>
+                    </table>
+                </td>
+                <td id="spoiler">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Form Edit Data</th>
+                            </tr>
+                        </thead>
+                        <form action="javascript:void(0);" method="POST" id="saveEdit">
+                            <tbody>
+                                <tr>
+                                        <td>No</td>
+                                        <td>&nbsp;:&nbsp;</td>
+                                    <td><input type="text" id="edit-no" disabled="disabled"></td>
+                                </tr>
+                                <tr>
+                                        <td>Username</td>
+                                        <td>&nbsp;:&nbsp;</td>
+                                    <td><input type="text" id="edit-username" disabled="disabled"></td>
+                                </tr>
+                                <tr>
+                                        <td>Nama</td>
+                                        <td>&nbsp;:&nbsp;</td>
+                                    <td><input type="text" id="edit-name" disabled="disabled"></td>
+                                </tr>
+                                <tr>
+                                        <td>Alamat</td>
+                                        <td>&nbsp;:&nbsp;</td>
+                                    <td><input type="text" id="edit-address"></td>
+                                </tr>
+                                <tr>
+                                        <td>Role</td>
+                                        <td>&nbsp;:&nbsp;</td>
+                                    <td><input type="text" id="edit-role"></td>
+                                </tr>
+                                <tr>
+                                        <td>Pengalaman Kerja</td>
+                                        <td>&nbsp;:&nbsp;</td>
+                                    <td><input type="text" id="edit-experince"></td>
+                                </tr>
+                                <tr>
+                                    <td>Skill</td>
+                                    <td>&nbsp;:&nbsp;</td>
+                                    <td>
+                                        <input type="checkbox" id="add-skill" name="skill" value="Java"> Java<br>
+                                        <input type="checkbox" id="add-skill" name="skill" value="Javascript"> Javascript<br>
+                                        <input type="checkbox" id="add-skill" name="skill" value="Mysql"> Mysql<br>
+                                        <input type="checkbox" id="add-skill" name="skill" value="Management Bisnis"> Management Bisnis<br>
+                                        <input type="checkbox" id="add-skill" name="skill" value="Lainnya"> Lainnya<br>
+                                    </td>
+                                </tr>
+                                <tr>
+                                        <td></td>
+                                        <td></td>
+                                    <td><input type="submit" value="Edit" class="btn btn-success btn-sm"> <a onclick="CloseInput()" aria-label="Close" class="btn btn-warning btn-sm">Batal</a></td>
+                                </tr>
+                            </tbody>
+                            </form>
+                    </table>
+                </td>
+            </tr>
+            <tr><td height="40" colspan="3"></td></tr>
+            <tr><td colspan="3" align="center"><input type="submit" value="Logout" class="btn btn-danger" onclick="app.Logout()"></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+<div id="hr-profile" style="display: none">
+    <div class="logo"></div>
+    <div class="staff">
+        <center><h3>Selamat Datang, <p id="hr-profile-welcome"></p></h3></center>
+        <table align="center" width="80%">
+            <tr>
+                <td valign="top" width="30%">Username</td>
+                <td valign="top" width="2%">&nbsp;:&nbsp;</td>
+                <td><div id="hr-profile-username"></div></td>
+            </tr>
+            <tr>
+                <td>Nama</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td><div id="hr-profile-name"></div></td>
+            </tr>
+            <tr>
+                <td>Alamat</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td><div id="hr-profile-address"></div></td>
+            </tr>
+            <tr><td height="40" colspan="3"></td></tr>
+            <tr><td colspan="3" align="center"><b>Riwayat Pekerjaan</b></td></tr>
+            <tr>
+                <td colspan="3">
+                    <table id="t-staff" width="80%" align="center">
+                        <thead>
+                            <tr>
+                                <th width="3%">No.</th>
+                                <th>Pekerjaan</th>
+                                <th>Awal Kerja</th>
+                                <th>Akhir Kerja</th>
+                            </tr>
+                        </thead>
+                        <tbody id="staff-experince">
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr><td height="40" colspan="3"></td></tr>
+            <tr><td colspan="3" align="center"><b>Keahlian</b></td></tr>
+            <tr>
+                <td colspan="3">
+                    <table id="t-staff" width="80%" align="center">
+                        <thead>
+                            <tr>
+                                <th width="3%">No.</th>
+                                <th>Keahlian</th>
+                            </tr>
+                        </thead>
+                        <tbody id="staff-skill">
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr><td height="40" colspan="3"></td></tr>
+            <tr><td colspan="3" align="center"><input type="submit" value="Kembali" class="btn btn-danger" onclick="app.Back()"></td>
+            </tr>
+        </table>
+    </div> 
+</div>
+
+<div id="registration" style="display: none">
+    <div class="logo"></div>
+    <div class="staff">
+    
+        <center><h3>Tambah Data Karyawan</h3></center>
+
+        <form action="javascript:void(0);" method="POST" onsubmit="app.Add()"> 
+            <table align="center" width="80%">
+                <tr>
+                    <td valign="top" width="30%">Username</td>
+                    <td valign="top" width="2%">&nbsp;:&nbsp;</td>
+                    <td><input type="text" id="add-username" placeholder="Masukkan username" class="form-control"><p id="duplicate" style="display: none; color: red; font-size: 12px;"></p></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td>&nbsp;:&nbsp;</td>
+                    <td><input type="password" id="add-password" placeholder="****************" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>Nama</td>
+                    <td>&nbsp;:&nbsp;</td>
+                    <td><input type="text" id="add-name" placeholder="Masukkan nama" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>Alamat</td>
+                    <td>&nbsp;:&nbsp;</td>
+                    <td><input type="text" id="add-address" placeholder="Masukkan alamat" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>Role</td>
+                    <td>&nbsp;:&nbsp;</td>
+                    <td><input type="text" id="add-role" placeholder="Masukkan role" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td valign="top">Pengalaman Kerja</td>
+                    <td valign="top">&nbsp;:&nbsp;</td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>Jenis Pekerjaan</td>
+                                <td width="1%">:</td>
+                                <td><input type="text" id="add-type-job" placeholder="Jenis Pekerjaan" class="form-control"></td>
+                            </tr>
+                            <!--<tr>
+                                <td>Tanggal Mulai Kerja</td>
+                                <td>:</td>
+                                <td><input type="date" id="add-start-job" placeholder="Tanggal Mulai Kerja" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <td>Tanggal Berakhir Kerja</td>
+                                <td>:</td>
+                                <td><input type="date" id="add-end-job" placeholder="Tanggal Berakhir Kerja" class="form-control"></td>
+                            </tr>
+                            <--<tr><td height="20" colspan="3"></td></tr>
+                            <tr>
+                                <td>Jenis Pekerjaan</td>
+                                <td width="1%">:</td>
+                                <td><input type="text" id="add-job" placeholder="Jenis Pekerjaan" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <td>Tanggal Mulai Kerja</td>
+                                <td>:</td>
+                                <td><input type="date" id="add-job" placeholder="Tanggal Mulai Kerja" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <td>Tanggal Berakhir Kerja</td>
+                                <td>:</td>
+                                <td><input type="date" id="add-job" placeholder="Tanggal Berakhir Kerja" class="form-control"></td>
+                            </tr>-->
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Skill</td>
+                    <td>&nbsp;:&nbsp;</td>
+                    <td>
+                        <input type="checkbox" id="add-skill" name="skill" value="Java"> Java<br>
+                        <input type="checkbox" id="add-skill" name="skill" value="Javascript"> Javascript<br>
+                        <input type="checkbox" id="add-skill" name="skill" value="Mysql"> Mysql<br>
+                        <input type="checkbox" id="add-skill" name="skill" value="Management Bisnis"> Management Bisnis<br>
+                        <input type="checkbox" id="add-skill" name="skill" value="Lainnya"> Lainnya<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Add" class="btn btn-primary">
+                    </form>
+                    </td>
+                </tr>
+            </table>
+        <hr>
+        <input type="submit" value="Kembali" class="btn btn-danger" onclick="app.RegistrationBack()">
+    </div>
+</div>
+
+<div id="afterLogin" style="display: none">
+    <div class="logo"></div>
+    <div class="login-block2">
+    <div class="container">
+        <table width="100%">
+            <tr>
+                <td width="65%">
+                    <table rules="rows" width="98%" align="left">
+                        <thead>
+                        <tr>
+                            <th width="3%">No.</th>
+                            <th>Username</th>
+                            <th>Nama</th>
+                            <th>Alamat</th>
+                            <th>Pekerjaan</th>
+                            <th>Skill</th>
+                            <th>#</th>
+                          </tr>
+                    </thead>
+                    <tbody id="population">
+                    </tbody>
+                    <tr>
+                        <td colspan="7" align="center">
+                                <input type="submit" value="First" class="btn btn-default btn-sm" onclick="app.First()">
+                                <input type="submit" value="Previous" class="btn btn-primary btn-sm" onclick="app.Previous()">
+                                <input type="submit" value="Next" class="btn btn-primary btn-sm" onclick="app.Next()">
+                                <input type="submit" value="Last" class="btn btn-default btn-sm" onclick="app.Last()">
+                            </td>
+                    </tr>
+                </table>
+            </td>
+            <td id="spoiler">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Form Edit Data</th>
+                        </tr>
+                    </thead>
+                    <form action="javascript:void(0);" method="POST" id="saveEdit">
+                        <tbody>
+                            <tr>
+                                    <td>No</td>
+                                    <td>&nbsp;:&nbsp;</td>
+                                <td><input type="text" id="edit-no" disabled="disabled"></td>
+                            </tr>
+                            <tr>
+                                    <td>Username</td>
+                                    <td>&nbsp;:&nbsp;</td>
+                                <td><input type="text" id="edit-username" disabled="disabled"></td>
+                            </tr>
+                            <tr>
+                                    <td>Nama</td>
+                                    <td>&nbsp;:&nbsp;</td>
+                                <td><input type="text" id="edit-name" disabled="disabled"></td>
+                            </tr>
+                            <tr>
+                                    <td>Alamat</td>
+                                    <td>&nbsp;:&nbsp;</td>
+                                <td><input type="text" id="edit-address"></td>
+                            </tr>
+                            <tr>
+                                    <td>Pekerjaan</td>
+                                    <td>&nbsp;:&nbsp;</td>
+                                <td><input type="text" id="edit-job"></td>
+                            </tr>
+                            <tr>
+                                <td>Skill</td>
+                                <td>&nbsp;:&nbsp;</td>
+                                <td>
+                                    <input type="checkbox" id="add-skill" name="skill" value="Java"> Java<br>
+                                    <input type="checkbox" id="add-skill" name="skill" value="Javascript"> Javascript<br>
+                                    <input type="checkbox" id="add-skill" name="skill" value="Mysql"> Mysql<br>
+                                    <input type="checkbox" id="add-skill" name="skill" value="Management Bisnis"> Management Bisnis<br>
+                                    <input type="checkbox" id="add-skill" name="skill" value="Lainnya"> Lainnya<br>
+                                </td>
+                            </tr>
+                            <tr>
+                                    <td></td>
+                                    <td></td>
+                                <td><input type="submit" value="Edit" class="btn btn-success btn-sm"> <a onclick="CloseInput()" aria-label="Close" class="btn btn-warning btn-sm">Batal</a></td>
+                            </tr>
+                        </tbody>
+                        </form>
+                </table>
+            </td>
+            </tr>
+        </table>
+        <br><br><center><input type="submit" name="Logout" value="Logout" class="btn btn-default btn-sm" onclick="app.Logout()"></center>
+    </div>
+    </div>
+</div>-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>
