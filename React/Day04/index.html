@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	  <style>
+	    input[type='submit'], button, [aria-label]{
+	      cursor: pointer;
+	    }
+	    #spoiler{
+	      display: none;
+	    }
+	  </style>
+		<script class="jsbin" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	  <script src="script.js" defer></script>
+</head>
+<body>
+	<center><h3>Form Input Data</h3></center>
+
+	<form action="javascript:void(0);" method="POST" onsubmit="app.Add()"> 
+		<table align="center" width="80%">
+			<tr>
+				<td valign="top" width="30%">Username</td>
+				<td valign="top" width="2%">&nbsp;:&nbsp;</td>
+				<td><input type="text" id="add-username" placeholder="Masukkan username" class="form-control"><p id="duplicate" style="display: none; color: red; font-size: 12px;"></p></td>
+			</tr>
+			<tr>
+				<td>Nama</td>
+				<td>&nbsp;:&nbsp;</td>
+				<td><input type="text" id="add-name" placeholder="Masukkan nama" class="form-control"></td>
+			</tr>
+			<tr>
+				<td>Alamat</td>
+				<td>&nbsp;:&nbsp;</td>
+				<td><input type="text" id="add-address" placeholder="Masukkan alamat" class="form-control"></td>
+			</tr>
+			<tr>
+				<td>Pekerjaan</td>
+				<td>&nbsp;:&nbsp;</td>
+				<td><input type="text" id="add-job" placeholder="Masukkan pekerjaan" class="form-control"></td>
+			</tr>
+			<tr>
+				<td>Hobi</td>
+				<td>&nbsp;:&nbsp;</td>
+				<td>
+					<input type="checkbox" id="add-hobby" name="hobby" value="Bulu Tangkis"> Bulu Tangkis<br>
+					<input type="checkbox" id="add-hobby" name="hobby" value="Catur"> Catur<br>
+					<input type="checkbox" id="add-hobby" name="hobby" value="Futsal"> Futsal<br>
+					<input type="checkbox" id="add-hobby" name="hobby" value="Remi"> Remi<br>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td><input type="submit" value="Add" class="btn btn-primary"></td>
+			</tr>
+		</table>
+	</form>
+	<hr>
+
+	<div class="container">
+		<table width="100%">
+			<tr>
+				<td width="65%">
+					<table rules="rows" width="98%" align="left">
+						<thead>
+  						<tr>
+						    <th width="3%">No.</th>
+						    <th>Username</th>
+						    <th>Nama</th>
+						    <th>Alamat</th>
+						    <th>Pekerjaan</th>
+						    <th>Hobi</th>
+						    <th>#</th>
+						  </tr>
+  					</thead>
+				    <tbody id="population">
+				    </tbody>
+				    <tr>
+				    	<td colspan="7" align="center">
+								<input type="submit" value="First" class="btn btn-default btn-sm" onclick="app.First()">
+								<input type="submit" value="Previous" class="btn btn-primary btn-sm" onclick="app.Previous()">
+								<input type="submit" value="Next" class="btn btn-primary btn-sm" onclick="app.Next()">
+								<input type="submit" value="Last" class="btn btn-default btn-sm" onclick="app.Last()">
+							</td>
+				    </tr>
+  				</table>
+  			</td>
+  			<td id="spoiler">
+  				<table>
+  					<thead>
+  						<tr>
+  							<th>Form Edit Data</th>
+  						</tr>
+  					</thead>
+	  				<form action="javascript:void(0);" method="POST" id="saveEdit">
+	  					<tbody>
+	  						<tr>
+									<td>No</td>
+									<td>&nbsp;:&nbsp;</td>
+	  							<td><input type="text" id="edit-no" disabled="disabled"></td>
+	  						</tr>
+	  						<tr>
+									<td>Username</td>
+									<td>&nbsp;:&nbsp;</td>
+	  							<td><input type="text" id="edit-username" disabled="disabled"></td>
+	  						</tr>
+	  						<tr>
+									<td>Nama</td>
+									<td>&nbsp;:&nbsp;</td>
+	  							<td><input type="text" id="edit-name" disabled="disabled"></td>
+	  						</tr>
+	  						<tr>
+									<td>Alamat</td>
+									<td>&nbsp;:&nbsp;</td>
+	  							<td><input type="text" id="edit-address"></td>
+	  						</tr>
+	  						<tr>
+									<td>Pekerjaan</td>
+									<td>&nbsp;:&nbsp;</td>
+	  							<td><input type="text" id="edit-job"></td>
+	  						</tr>
+	  						<tr>
+									<td>Hobi</td>
+									<td>&nbsp;:&nbsp;</td>
+	  							<td>
+										<input type="checkbox" id="edit-hobby1" name="hobby" value="Bulu Tangkis"> Bulu Tangkis<br>
+										<input type="checkbox" id="edit-hobby2" name="hobby" value="Catur"> Catur<br>
+										<input type="checkbox" id="edit-hobby3" name="hobby" value="Futsal"> Futsal<br>
+										<input type="checkbox" id="edit-hobby4" name="hobby" value="Remi"> Remi<br>
+									</td>
+	  						</tr>
+	  						<tr>
+									<td></td>
+									<td></td>
+	  							<td><input type="submit" value="Edit" class="btn btn-success btn-sm"> <a onclick="CloseInput()" aria-label="Close" class="btn btn-warning btn-sm">Batal</a></td>
+	  						</tr>
+	  					</tbody>
+	 					</form>
+  				</table>
+  			</td>
+			</tr>
+		</table>
+	</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
