@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "257955298326",
+    "firebase_url": "https://crud-react-native-45dd2.firebaseio.com",
+    "project_id": "crud-react-native-45dd2",
+    "storage_bucket": "crud-react-native-45dd2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:257955298326:android:d02e6688974362ae81c937",
+        "android_client_info": {
+          "package_name": "com.day21"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "257955298326-sjiogd85u1ohirh5p0f6aj283t73e2pn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQA7SiQ31Z9T7OyG8Vh4EXuHINhOsSMm8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "257955298326-sjiogd85u1ohirh5p0f6aj283t73e2pn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
